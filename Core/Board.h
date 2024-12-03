@@ -1,5 +1,6 @@
 #pragma once
 
+#include <iostream>
 #include <vector>
 
 using namespace std;
@@ -17,6 +18,7 @@ public:
 	Board(vector<int> sizes);
 
 	void print();
+	bool isOver();
 	bool placeSymbol(int x, int y, char symbol);
 	virtual char checkForWinner()=0;
 
