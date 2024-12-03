@@ -3,4 +3,16 @@ project(GameApplication)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(GameApplication main.cpp)
+add_executable(GameApplication
+        main.cpp
+
+        Core/Board.h
+        Core/Board.cpp
+        Core/GameManager.h
+        Core/GameManager.cpp
+        Core/Player.h
+        Core/Player.cpp
+        Core/RandomPlayer.h
+        Core/RandomPlayer.cpp
+
+)
