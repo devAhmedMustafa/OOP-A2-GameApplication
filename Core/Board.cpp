@@ -12,6 +12,10 @@ Board::Board(vector<int> sizes) {
 	this->sizes = sizes;
 }
 
+char* Board::getSymbols(){
+    return this->symbols;
+}
+
 void Board::print() {
 	for (int i = 0; i < this->sizes[1]; i++) {
 		for (int j = 0; j < this->sizes[0]; j++) {
@@ -33,4 +37,12 @@ bool Board::isOver() {
 
 	return false;
 
+}
+
+bool Board::placeSymbol(int x, int y, char symbol) {
+    if (this->matrix[y][x] == 0) {
+        this->matrix[y][x] = symbol;
+        return true;
+    }
+    return false;
 }

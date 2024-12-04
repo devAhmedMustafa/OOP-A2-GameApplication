@@ -1,7 +1,10 @@
 #include <iostream>
 
+using namespace std;
 int main() {
-    std::cout << "Hello, World!" << std::endl;
-    std::cout << "Test" << std::endl;
+
+
+    cout << "Test 1" << endl;
+
     return 0;
 }
