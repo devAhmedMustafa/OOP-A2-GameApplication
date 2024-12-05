@@ -7,7 +7,6 @@ add_executable(GameApplication
         main.cpp
 
         Core/Board.h
-        Core/Board.cpp
         Core/GameManager.h
         Core/GameManager.cpp
         Core/Player.h
