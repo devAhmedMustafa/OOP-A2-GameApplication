@@ -1,25 +1,27 @@
 #pragma once
 
 #include <iostream>
+#include "Board.h"
 
 using namespace std;
 
-class Player
-{
-
-private:
-
+template <typename T>
+class Player {
+protected:
 	string name;
-	char symbol;
-
-	int pos[2];
-
+	T symbol;
+	Board<T>* boardPtr;  // Pointer to the board
 public:
+	/// Two constructors to initiate players
+	/// Give the player a symbol to use in playing
+	/// It can be X, O, or others
+	/// Optionally, you can give them a name
+	Player(string n, T symbol);
+	Player(T symbol); // For computer players
 
-	Player(string, char);
-
-	void move(int x, int y);
-	char getSymbol();
-
+	virtual void getmove(int& x, int& y) = 0;
+	T getsymbol();
+	string getname();
+	void setBoard(Board<T>* b);
 };
 

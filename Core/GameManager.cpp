@@ -1,26 +1,33 @@
 #include "GameManager.h"
 
-GameManager::GameManager(Board &board) : board(&board) {
-    this->player1 = new Player("Name 1", board.getSymbols()[0]);
-    this->player2 = new Player("Name 2", board.getSymbols()[1]);
+template <typename T>
+GameManager<T>::GameManager(Board<T>* bPtr, Player<T>* playerPtr[2]) {
+    boardPtr = bPtr;
+    players[0] = playerPtr[0];
+    players[1] = playerPtr[1];
 }
 
-void GameManager::swapPlayers() {
-    currentPlayer = (1-currentPlayer);
-}
+template <typename T>
+void GameManager<T>::run() {
+    int x, y;
 
-void GameManager::run() {
+    boardPtr->display_board();
 
-    while(!board->isOver()){
-
-        board->print();
-
-        this->swapPlayers();
-
-        if (board->checkForWinner() != 'Q'){
-            return;
+    while (!boardPtr->game_is_over()) {
+        for (int i : {0, 1}) {
+            players[i]->getmove(x, y);
+            while (!boardPtr->update_board(x, y, players[i]->getsymbol())) {
+                players[i]->getmove(x, y);
+            }
+            boardPtr->display_board();
+            if (boardPtr->is_win()) {
+                cout << players[i]->getname() << " wins\n";
+                return;
+            }
+            if (boardPtr->is_draw()) {
+                cout << "Draw!\n";
+                return;
+            }
         }
-
     }
-
 }

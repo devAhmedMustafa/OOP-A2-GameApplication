@@ -3,23 +3,14 @@
 #include "Board.h"
 #include "Player.h"
 
-class GameManager
-{
-
+template <typename T>
+class GameManager {
 private:
-
-	Board* board;
-
-	Player* player1;
-	Player* player2;
-
-	int currentPlayer;
-
+	Board<T>* boardPtr;
+	Player<T>* players[2];
 public:
+	GameManager(Board<T>*, Player<T>* playerPtr[2]);
 
-	GameManager(Board& board);
-	void swapPlayers();
 	void run();
-
 };
 
