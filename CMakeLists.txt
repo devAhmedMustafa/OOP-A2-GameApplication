@@ -13,5 +13,9 @@ add_executable(GameApplication
         Core/Player.cpp
         Core/RandomPlayer.h
         Core/RandomPlayer.cpp
+        Utils/GameTheory.cpp
+        Utils/GameTheory.h
+        Four-in-row/Board_Four_In_Row.h
+        Four-in-row/Board_Four_In_Row.cpp
 
 )
