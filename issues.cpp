@@ -10,7 +10,7 @@ using namespace std;
 class HumanPlayer : public Player<char> {
 public:
     // Constructor to initialize the player with a name and symbol
-    HumanPlayer(string name, char symbol) : Player<char>(name, symbol) {}
+    HumanPlayer(string name, char symbol) : Player<char>(name, symbol)  {}
 
     // Implementation of the pure virtual getmove method
     void getmove(int& x, int& y) override {
@@ -141,7 +141,7 @@ int main() {
         cout << "1. Play 5x5 Tic Tac Toe" << endl;
         cout << "2. Exit" << endl;
         cout << "Enter your choice: ";
-        
+
         int choice;
         string pname1;
         string pname2;
@@ -154,7 +154,7 @@ int main() {
             cout << "Starting 5x5 Tic Tac Toe..." << endl;
 
             // Create Tic Tac Toe board
-            fivexfiveboard* board = new fivexfiveboard();
+            Board<char>* board = new fivexfiveboard();
 
             // Create players
             Player<char>* players[2];
@@ -162,18 +162,19 @@ int main() {
             cin >> pname1;
             cout << "Enter player 'O' name :" << endl;
             cin >> pname2;
+
             players[0] = new HumanPlayer(pname1, 'X');
-            players[1] = new HumanPlayer(pname2, 'O'); 
+            players[1] = new HumanPlayer(pname2, 'O');
 
             // Set board for players
-            players[0]->setBoard(board);
-            players[1]->setBoard(board);
+//            players[0]->setBoard(board);
+//            players[1]->setBoard(board);
 
             // Create GameManager for Tic Tac Toe
-            GameManager<char> gameManager(board, players);
-
-            // Run the game
-            gameManager.run();
+//            GameManager<char> gameManager(board, players);
+//
+//            // Run the game
+//            gameManager.run();
 
             // Clean up memory
             delete players[0];
