@@ -9,3 +9,5 @@ cmake-build-*
 *.dll
 *.exe
 .vscode
+CMakeLists.txt
+test.cpp

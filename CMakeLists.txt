@@ -3,6 +3,17 @@ project(GameApplication)
 
 set(CMAKE_CXX_STANDARD 20)
 
+set(GLEW_PATH "C:\\libs\\glew")
+set(GLFW_PATH "C:/glfw-3.4.bin.WIN64")
+set(GLEW_STATIC ON)
+
+include_directories(${GLEW_PATH}/include ${GLFW_PATH}/include)
+
+find_library(GLEW_LIB glew32s HINTS ${GLEW_PATH}/lib/Release/x64)
+find_library(GLFW_LIB glfw3 HINTS ${GLFW_PATH}/lib-vc2015)
+
+find_package(OpenGL REQUIRED)
+
 add_executable(GameApplication
         main.cpp
 
@@ -15,3 +26,6 @@ add_executable(GameApplication
         Core/RandomPlayer.cpp
 
 )
+
+target_compile_definitions(Assignment1 PUBLIC GLEW_STATIC)
+target_link_libraries(Assignment1 PRIVATE ${GLEW_LIB} ${GLFW_PATH}/lib-vc2015/glfw3.lib ${OPENGL_LIBRARIES})
