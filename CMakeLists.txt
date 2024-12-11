@@ -31,5 +31,5 @@ add_executable(GameApplication
 
 )
 
-target_compile_definitions(Assignment1 PUBLIC GLEW_STATIC)
-target_link_libraries(Assignment1 PRIVATE ${GLEW_LIB} ${GLFW_PATH}/lib-vc2015/glfw3.lib ${OPENGL_LIBRARIES})
+target_compile_definitions(GameApplication PUBLIC GLEW_STATIC)
+target_link_libraries(GameApplication PRIVATE ${GLEW_LIB} ${GLFW_PATH}/lib-vc2015/glfw3.lib ${OPENGL_LIBRARIES})
