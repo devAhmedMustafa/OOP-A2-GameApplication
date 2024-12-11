@@ -5,6 +5,7 @@
 #ifndef GAMEAPPLICATION_BOARD_FOUR_IN_ROW_H
 #define GAMEAPPLICATION_BOARD_FOUR_IN_ROW_H
 
+#include <iostream>
 #include "../Core/Board.h"
 
 class Board_Four_In_Row : public Board<char> {
@@ -15,7 +16,11 @@ private:
 public:
     Board_Four_In_Row();
 
-    bool place(int x, char symbol);
+    bool update_board(int x, int y, char symbol) override;
+    void display_board() override;
+    bool is_win() override;
+    bool is_draw() override;
+    bool game_is_over() override;
 };
 
 
