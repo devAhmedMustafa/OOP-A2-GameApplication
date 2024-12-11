@@ -11,3 +11,5 @@ cmake-build-*
 .vscode
 CMakeLists.txt
 test.cpp
+CMakeLists.txt
+test.cpp
