@@ -31,3 +31,5 @@ void GameManager<T>::run() {
         }
     }
 }
+
+template class GameManager<int>;
