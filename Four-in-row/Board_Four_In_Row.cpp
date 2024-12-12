@@ -16,6 +16,23 @@ Board_Four_In_Row::Board_Four_In_Row() {
     }
 }
 
+vector<float> Board_Four_In_Row::flatten_board() const {
+    vector<float> flattened_board;
+    for (int i = 0; i < 6; i++){
+        for (int j = 0; j < 7; j++){
+            if (this->board[i][j] == 'X'){
+                flattened_board.push_back(1);
+            } else if (this->board[i][j] == 'O'){
+                flattened_board.push_back(-1);
+            } else {
+                flattened_board.push_back(0);
+            }
+        }
+    }
+
+    return flattened_board;
+}
+
 void Board_Four_In_Row::display_board() {
     cout << "  ";
     for (int j = 0; j < 7; j++) {
@@ -64,11 +81,11 @@ bool Board_Four_In_Row::is_win() {
 }
 
 bool Board_Four_In_Row::game_is_over() {
-    return false;
+    return (n_moves == 42);
 }
 
 bool Board_Four_In_Row::is_draw() {
-    return false;
+    return (n_moves == 42);
 }
 
 bool Board_Four_In_Row::update_board(int x, int y, char symbol) {
@@ -82,6 +99,7 @@ bool Board_Four_In_Row::update_board(int x, int y, char symbol) {
 
     this->board[this->filled[x]][x] = symbol;
     this->filled[x]--;
+    this->n_moves++;
 
     return false;
 }

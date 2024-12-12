@@ -7,19 +7,21 @@
 
 #include <torch/torch.h>
 
+using namespace torch;
 
-struct Network final : torch::nn::Module {
-    torch::nn::Linear fc1{nullptr}, fc2{nullptr}, fc3{nullptr};
+struct Network : nn::Module {
+
+    nn::Linear fc1{nullptr}, fc2{nullptr}, fc3{nullptr};
 
     Network() {
-        fc1 = register_module("fc1", torch::nn::Linear(42, 128));
-        fc2 = register_module("fc2", torch::nn::Linear(128, 128));
-        fc3 = register_module("fc3", torch::nn::Linear(128, 7));
+        fc1 = register_module("fc1", nn::Linear(42, 128));
+        fc2 = register_module("fc2", nn::Linear(128, 128));
+        fc3 = register_module("fc3", nn::Linear(128, 7));
     }
 
-    torch::Tensor forward(torch::Tensor x) {
-        x = torch::relu(fc1(x));
-        x = torch::relu(fc2(x));
+    Tensor forward(Tensor x) {
+        x = relu(fc1(x));
+        x = relu(fc2(x));
         x = fc3(x);
         return x;
     }

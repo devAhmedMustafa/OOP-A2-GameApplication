@@ -9,14 +9,16 @@
 
 class Connect4Agent {
 
+public:
+
+
     Network policy, target;
     ReplayBuffer replay_buffer;
     float epsilon;
     float gamma;
-    torch::optim::Adam optimizer;
+    optim::Adam optimizer;
     size_t batch_size;
 
-public:
 
     Connect4Agent(size_t buffer_size, float lr, float epsilon, float gamma, size_t batch_size);
     int take_action(torch::Tensor state, bool explore = true);
