@@ -7,9 +7,9 @@
 #include "../Core/Board.h"
 
 
-class NumericalTTT : public Board<int> {
+class NTTT_Board : public Board<int> {
 public:
-    NumericalTTT();
+    NTTT_Board();
 
     bool update_board(int x, int y, int symbol) override;
     void display_board() override;

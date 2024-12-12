@@ -2,13 +2,13 @@
 // Created by Ahmed Mustafa on 12/12/2024.
 //
 
-#include "NumericalTTT.h"
+#include "NTTT_Board.h"
 #include <iomanip>
 #include <iostream>
 
 #include "../Utils/GameTheory.h"
 
-NumericalTTT::NumericalTTT() {
+NTTT_Board::NTTT_Board() {
     this->rows = 3;
     this->columns = 3;
     this->board = new int*[3];
@@ -18,7 +18,7 @@ NumericalTTT::NumericalTTT() {
     }
 }
 
-bool NumericalTTT::update_board(int x, int y, int symbol) {
+bool NTTT_Board::update_board(int x, int y, int symbol) {
     if (x < 0 || x >= 3 || y < 0 || y >= 3 || this->board[x][y] != 0){
         return false;
     }
@@ -28,7 +28,7 @@ bool NumericalTTT::update_board(int x, int y, int symbol) {
     return true;
 }
 
-void NumericalTTT::display_board() {
+void NTTT_Board::display_board() {
     for (int i = 0; i < 3; i++){
         for (int j = 0; j < 3; j++){
             cout << setw(3) << this->board[i][j];
@@ -37,15 +37,15 @@ void NumericalTTT::display_board() {
     }
 }
 
-bool NumericalTTT::is_draw() {
+bool NTTT_Board::is_draw() {
     return this->n_moves == 9;
 }
 
-bool NumericalTTT::game_is_over() {
+bool NTTT_Board::game_is_over() {
     return this->is_win() || this->is_draw();
 }
 
-bool NumericalTTT::is_win() {
+bool NTTT_Board::is_win() {
 
     vector<vector<int>> kernelHorizontal = {{1, 1, 1}};
     vector<vector<int>> kernelVertical = {{1}, {1}, {1}};

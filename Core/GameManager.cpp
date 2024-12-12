@@ -17,6 +17,7 @@ void GameManager<T>::run() {
         for (int i : {0, 1}) {
             players[i]->getmove(x, y);
             while (!boardPtr->update_board(x, y, players[i]->getsymbol())) {
+                cout << "Invalid move. Try again\n";
                 players[i]->getmove(x, y);
             }
             boardPtr->display_board();

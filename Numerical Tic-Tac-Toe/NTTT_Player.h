@@ -12,6 +12,7 @@ public:
     NTTT_Player(string name, int symbol);
     NTTT_Player(int symbol);
     void getmove(int &x, int &y) override;
+    int getNumber();
 };
 
 

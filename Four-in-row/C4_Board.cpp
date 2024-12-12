@@ -2,11 +2,11 @@
 // Created by am180 on 12/5/2024.
 //
 
-#include "Board_Four_In_Row.h"
+#include "C4_Board.h"
 #include "../Utils/GameTheory.h"
 #include <iomanip>
 
-Board_Four_In_Row::Board_Four_In_Row() {
+C4_Board::C4_Board() {
     this->rows = 6;
     this->columns = 7;
     this->board = new char*[6];
@@ -16,7 +16,7 @@ Board_Four_In_Row::Board_Four_In_Row() {
     }
 }
 
-vector<float> Board_Four_In_Row::flatten_board() const {
+vector<float> C4_Board::flatten_board() const {
     vector<float> flattened_board;
     for (int i = 0; i < 6; i++){
         for (int j = 0; j < 7; j++){
@@ -33,7 +33,7 @@ vector<float> Board_Four_In_Row::flatten_board() const {
     return flattened_board;
 }
 
-void Board_Four_In_Row::display_board() {
+void C4_Board::display_board() {
     cout << "  ";
     for (int j = 0; j < 7; j++) {
         cout << setw(3) << j + 1;
@@ -50,9 +50,14 @@ void Board_Four_In_Row::display_board() {
     }
 }
 
-bool Board_Four_In_Row::is_win() {
+bool C4_Board::is_win() {
     vector<vector<int>> hKernel = {{1,1,1,1}};
-    vector<vector<int>> vKernel = {{1},{1},{1},{1}};
+    vector<vector<int>> vKernel = {
+        {1},
+        {1},
+        {1},
+        {1}
+    };
     vector<vector<int>> dKernel = {
         {1,0,0,0},
         {0,1,0,0},
@@ -80,15 +85,15 @@ bool Board_Four_In_Row::is_win() {
     return winner;
 }
 
-bool Board_Four_In_Row::game_is_over() {
+bool C4_Board::game_is_over() {
     return (n_moves == 42);
 }
 
-bool Board_Four_In_Row::is_draw() {
+bool C4_Board::is_draw() {
     return (n_moves == 42);
 }
 
-bool Board_Four_In_Row::update_board(int x, int y, char symbol) {
+bool C4_Board::update_board(int x, int y, char symbol) {
     if (x < 0 || x >= this->columns){
         return false;
     }
@@ -101,5 +106,5 @@ bool Board_Four_In_Row::update_board(int x, int y, char symbol) {
     this->filled[x]--;
     this->n_moves++;
 
-    return false;
+    return true;
 }

@@ -8,13 +8,13 @@
 #include <iostream>
 #include "../Core/Board.h"
 
-class Board_Four_In_Row : public Board<char> {
+class C4_Board : public Board<char> {
 
 private:
     int filled[7] = {5,5,5,5,5,5,5};
 
 public:
-    Board_Four_In_Row();
+    C4_Board();
 
     vector<float> flatten_board() const;
     bool update_board(int x, int y, char symbol) override;
