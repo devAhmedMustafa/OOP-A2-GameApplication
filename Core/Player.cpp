@@ -35,3 +35,4 @@ void Player<T>::setBoard(Board<T>* b) {
 }
 
 template class Player<int>;
+template class Player<char>;

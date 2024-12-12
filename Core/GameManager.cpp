@@ -33,3 +33,4 @@ void GameManager<T>::run() {
 }
 
 template class GameManager<int>;
+template class GameManager<char>;
