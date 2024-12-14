@@ -32,7 +32,7 @@ public:
 
     vector<state_tuple> sample(int batch_size) {
         vector<state_tuple> batch;
-        std::sample(buffer.begin(), buffer.end(), back_inserter(batch), batch_size, std::mt19937{random_device{}()});
+        std::sample(buffer.begin(), buffer.end(), back_inserter(batch), batch_size, std::mt19937{ std::random_device{}() });
         return batch;
     }
 

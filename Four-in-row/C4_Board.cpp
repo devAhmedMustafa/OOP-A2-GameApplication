@@ -16,6 +16,13 @@ C4_Board::C4_Board() {
     }
 }
 
+C4_Board::~C4_Board() {
+    for (int i = 0; i < 6; i++){
+        delete[] this->board[i];
+    }
+    delete[] this->board;
+}
+
 vector<float> C4_Board::flatten_board() const {
     vector<float> flattened_board;
     for (int i = 0; i < 6; i++){
@@ -76,21 +83,15 @@ bool C4_Board::is_win() {
 
     int winner = GameTheory::checkWinner(normalizedBoard, {hKernel, vKernel, dKernel, d2Kernel}, this->rows, this->columns, 4);
 
-    if (winner == 1){
-        cout << "Player 1 wins!" << endl;
-    } else if (winner == -1){
-        cout << "Player 2 wins!" << endl;
-    }
-
     return winner;
 }
 
 bool C4_Board::game_is_over() {
-    return (n_moves == 42);
+    return is_win() || is_draw();
 }
 
 bool C4_Board::is_draw() {
-    return (n_moves == 42);
+    return (n_moves == 42 && !is_win());
 }
 
 bool C4_Board::update_board(int x, int y, char symbol) {

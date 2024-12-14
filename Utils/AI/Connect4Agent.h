@@ -17,7 +17,7 @@ public:
     float epsilon;
     float gamma;
     optim::Adam optimizer;
-    size_t batch_size;
+    int batch_size;
 
 
     Connect4Agent(size_t buffer_size, float lr, float epsilon, float gamma, size_t batch_size);

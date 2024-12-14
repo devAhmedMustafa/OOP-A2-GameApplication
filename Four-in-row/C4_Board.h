@@ -15,6 +15,7 @@ private:
 
 public:
     C4_Board();
+    ~C4_Board();
 
     vector<float> flatten_board() const;
     bool update_board(int x, int y, char symbol) override;

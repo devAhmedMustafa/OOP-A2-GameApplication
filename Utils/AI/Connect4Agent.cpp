@@ -21,7 +21,7 @@ void Connect4Agent::train() {
     }
 
     auto batch = replay_buffer.sample(batch_size);
-    vector<torch::Tensor> states, actions, rewards, next_states;
+    vector<Tensor> states, actions, rewards, next_states;
 
     for (auto& [s, a, r, ns] : batch) {
         states.push_back(torch::tensor(s));
@@ -31,7 +31,7 @@ void Connect4Agent::train() {
     }
 
     auto states_tensor = torch::stack(states);
-    auto actions_tensor = torch::stack(actions);
+    auto actions_tensor = torch::stack(actions).unsqueeze(1);
     auto rewards_tensor = torch::stack(rewards);
     auto next_states_tensor = torch::stack(next_states);
 
@@ -39,17 +39,24 @@ void Connect4Agent::train() {
     auto [next_q_values, _] = target.forward(next_states_tensor).max(1);
     auto target_q_values = rewards_tensor + gamma * next_q_values;
 
-    auto loss = torch::mse_loss(q_values, target_q_values.unsqueeze(1));
+    auto loss = mse_loss(q_values, target_q_values.unsqueeze(1));
+
+    // cout << "Q-values: " << q_values << endl;
+    // cout << "Target Q-values: " << target_q_values.unsqueeze(1) << endl;
+    // cout << "Loss: " << loss.item<float>() << endl;
 
     optimizer.zero_grad();
     loss.backward();
     optimizer.step();
 
+
 }
 
 void Connect4Agent::update_target() {
-    torch::NoGradGuard no_grad;
+
+    NoGradGuard no_grad;
     for (size_t i = 0; i < policy.parameters().size(); i++) {
         target.parameters()[i].copy_(policy.parameters()[i]);
     }
+
 }

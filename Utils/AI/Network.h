@@ -11,12 +11,10 @@ using namespace torch;
 
 struct Network : nn::Module {
 
-    nn::Linear fc1{nullptr}, fc2{nullptr}, fc3{nullptr};
+    nn::Linear fc1{42, 128}, fc2{128, 128}, fc3{128, 7};
 
     Network() {
-        fc1 = register_module("fc1", nn::Linear(42, 128));
-        fc2 = register_module("fc2", nn::Linear(128, 128));
-        fc3 = register_module("fc3", nn::Linear(128, 7));
+
     }
 
     Tensor forward(Tensor x) {
