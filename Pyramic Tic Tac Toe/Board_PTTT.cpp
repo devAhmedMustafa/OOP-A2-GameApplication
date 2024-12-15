@@ -3,10 +3,12 @@
 //
 
 #include "Board_PTTT.h"
+#include <iostream>
+#include <iomanip>
 
 Board_PTTT::Board_PTTT(){
     this -> rows = 3;
-    this -> columns = 5
+    this -> columns = 5;
     this -> n_moves = n_moves;
     this -> board = new char*[3];
     board[0] = new char[1];
@@ -26,15 +28,14 @@ bool Board_PTTT::update_board(int x, int y, char symbol) {
     if(x < 0 || y < 0){
         return false;
     }
-    if(x != 2 && y == 0 ){
+    if(y == 0 && x > 0 ){
         return false;
     }
-    if(x == 0 && y == 1 ){
+
+    if(y == 1 && x > 2){
         return false;
     }
-    if(x == 4 && y == 1 ){
-        return false;
-    }
+
     if(x >= 5 || y >= 3){
         return false;
     }
@@ -61,8 +62,9 @@ void Board_PTTT::display_board() {
     }
     cout << endl;
 }
+
 bool Board_PTTT::is_win() {
-    T player;
+
     // Check middle vertical
     if (board[0][2] != 0 &&
         board[0][2] == board[1][2] &&
@@ -111,5 +113,4 @@ bool Board_PTTT::is_draw() {
 }
 bool Board_PTTT::game_is_over() {
     return is_win() || is_draw();
-}
 }

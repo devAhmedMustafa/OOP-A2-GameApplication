@@ -28,6 +28,10 @@ C4_Board::C4_Board(const C4_Board &board) {
             this->board[i][j] = board.board[i][j];
         }
     }
+
+    for (int i = 0; i < 7; i++){
+        this->filled[i] = board.filled[i];
+    }
 }
 
 C4_Board::~C4_Board() {

@@ -9,6 +9,7 @@
 class Board_PTTT : public Board<char> {
 public:
     Board_PTTT();
+    ~Board_PTTT();
     bool update_board(int x, int y, char symbol) override;
     void display_board() override;
     bool is_win() override;
