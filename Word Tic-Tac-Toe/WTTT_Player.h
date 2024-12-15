@@ -1,0 +1,14 @@
+//
+// Created by Nour on 2024-12-15.
+//
+
+#ifndef GAMEAPPLICATION_WTTT_PLAYER_H
+#define GAMEAPPLICATION_WTTT_PLAYER_H
+
+
+class WTTT_Player {
+
+};
+
+
+#endif //GAMEAPPLICATION_WTTT_PLAYER_H

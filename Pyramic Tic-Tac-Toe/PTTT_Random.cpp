@@ -8,7 +8,7 @@ PTTT_Random::PTTT_Random(char symbol) : PTTT_Player(symbol), RandomPlayer<char>(
     this->dimension = 5;
 }
 
-void PTTT_Random::getmove(int &y, int &x) { // Swapped x and y
+void PTTT_Random::getmove(int &y, int &x) {
     y = rand() % 3; // 3 rows in the pyramid
     if (y == 0) {
         x = 2; // Row 0 has only column 2
