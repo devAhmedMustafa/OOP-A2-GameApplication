@@ -33,3 +33,6 @@ template <typename T>
 void Player<T>::setBoard(Board<T>* b) {
 	this->boardPtr = b;
 }
+
+template class Player<int>;
+template class Player<char>;
