@@ -71,3 +71,33 @@ int** GameTheory::normalizeBoard(char **board, int rows, int columns, std::map<c
     return normalizedBoard;
     
 }
+
+int GameTheory::kernelSum(int **board, const std::vector<std::vector<int>> &kernel, int rows, int columns) {
+
+    const int kRows = kernel.size();
+    const int kColumns = kernel[0].size();
+
+    int sum = 0;
+
+    for (int row = 0; row <= rows - kRows; row++) {
+        for (int col = 0; col <= columns - kColumns; col++) {
+
+            int tempSum = 0;
+
+            for (int i = 0; i < kRows; i++) {
+                for (int j = 0; j < kColumns; j++) {
+                    tempSum += kernel[i][j] * board[row + i][col + j];
+                }
+            }
+
+            if (tempSum > sum) {
+                sum = tempSum;
+            }
+
+        }
+    }
+
+    return sum;
+
+}
+

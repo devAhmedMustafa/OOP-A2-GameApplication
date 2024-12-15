@@ -15,6 +15,7 @@ private:
 
 public:
     C4_Board();
+    C4_Board(const C4_Board &board);
     ~C4_Board();
 
     vector<float> flatten_board() const;
@@ -23,6 +24,8 @@ public:
     bool is_win() override;
     bool is_draw() override;
     bool game_is_over() override;
+
+    friend class C4_ai;
 };
 
 

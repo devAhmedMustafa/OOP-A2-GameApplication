@@ -16,6 +16,20 @@ C4_Board::C4_Board() {
     }
 }
 
+C4_Board::C4_Board(const C4_Board &board) {
+    this->rows = board.rows;
+    this->columns = board.columns;
+    this->n_moves = board.n_moves;
+    this->board = new char*[6];
+
+    for (int i = 0; i < 6; i++){
+        this->board[i] = new char[7];
+        for (int j = 0; j < 7; j++){
+            this->board[i][j] = board.board[i][j];
+        }
+    }
+}
+
 C4_Board::~C4_Board() {
     for (int i = 0; i < 6; i++){
         delete[] this->board[i];

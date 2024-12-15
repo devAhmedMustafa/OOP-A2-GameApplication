@@ -11,6 +11,9 @@
 class GameTheory {
 
 public:
+
+    static int kernelSum(int **board, const std::vector<std::vector<int>> &kernel, int rows, int columns);
+
     static int kernelWinner(int** board, const std::vector<std::vector<int>> &kernel, int rows, int columns, int winLength);
     static int checkWinner(int** board, const std::vector<std::vector<std::vector<int>>> &kernels, int rows, int columns, int winLength);
 

@@ -6,13 +6,13 @@
 #define C4_PLAYER_H
 #include "../Core/Player.h"
 
-
 class C4_Player : public Player<char> {
 public:
     C4_Player(char symbol);
     C4_Player(string name, char symbol);
 
     void getmove(int &x, int &y) override;
+
 };
 
 
