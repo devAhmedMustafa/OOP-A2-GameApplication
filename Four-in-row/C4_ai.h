@@ -12,13 +12,13 @@
 class C4_ai : public C4_Player {
 
     C4_Board* c4_board;
-    const int max_depth = 3;
+    const int max_depth = 6;
 
 public:
     C4_ai(char symbol, C4_Board&);
 
     void getmove(int &x, int &y) override;
-    int max_move(C4_Board board, int turn=1, int depth = 0);
+    pair<int, int> max_move(C4_Board board, int c_score=0, int turn=1, int depth = 0);
 };
 
 
