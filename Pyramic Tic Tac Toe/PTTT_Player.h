@@ -4,7 +4,7 @@
 
 #ifndef GAMEAPPLICATION_PTTT_BOARD_H
 #define GAMEAPPLICATION_PTTT_BOARD_H
-
+#include "../Core/Player.h"
 
 class PTTT_Player : public Player<char> {
 public:

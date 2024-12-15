@@ -2,7 +2,7 @@
 // Created by Nour on 2024-12-05.
 //
 
-#include "Board_PTTT.h"
+#include "PTTT_Board.h"
 #include <iostream>
 #include <iomanip>
 
