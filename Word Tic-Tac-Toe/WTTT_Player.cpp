@@ -12,11 +12,13 @@ void WTTT_Player::getmove(int &x, int &y) {
     char alphabet;
     cin >> alphabet;
 
+    int col, row;
     symbol = toupper(alphabet);
 
-    cout << "Enter the x coordinate: ";
-    cin >> x;
-    cout << "Enter the y coordinate: ";
-    cin >> y;
+    cout << "Enter the y and x coordinate: ";
+    cin >> row >> col;
+
+    x = col - 1;
+    y = row - 1;
 
 }

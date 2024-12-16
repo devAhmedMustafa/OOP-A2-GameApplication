@@ -53,7 +53,14 @@ bool WTTT_Board::update_board(int x, int y, char symbol) {
 
 void WTTT_Board::display_board() {
 
+    cout << "  ";
     for (int i = 0; i < 3; i++) {
+        cout << setw(3) << i + 1;
+    }
+    cout << endl;
+
+    for (int i = 0; i < 3; i++) {
+        cout << setw(2) << i + 1;
         for (int j = 0; j < 3; j++) {
             cout << setw(3) << board[i][j];
         }
@@ -72,7 +79,7 @@ bool WTTT_Board::is_win() {
     vector<vector<int>> dKernel = {{1,0,0},{0,1,0},{0,0,1}};
     vector<vector<int>> d2Kernel = {{0,0,1},{0,1,0},{1,0,0}};
 
-    ifstream file("dict.txt");
+    ifstream file("dic.txt");
     vector<string> words;
     string line;
     while (getline(file, line)) {
@@ -82,13 +89,13 @@ bool WTTT_Board::is_win() {
     for (auto & word : words) {
 
         map<char, int> mapping;
-        for (int j = 0; j < word.size(); j++) {
-            mapping[word[j]] = 1;
+        for (char j : word) {
+            mapping[j] = 1;
         }
 
         const auto normalized_board = GameTheory::normalizeBoard(board, 3, 3, mapping);
 
-        if (bool isWin = GameTheory::checkWinner(normalized_board, {hKernel, vKernel, dKernel, d2Kernel}, 3, 3, 3))
+        if (GameTheory::checkWinner(normalized_board, {hKernel, vKernel, dKernel, d2Kernel}, 3, 3, 3))
             return true;
 
     }
