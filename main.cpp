@@ -3,25 +3,27 @@
 #include <vector>
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
+#include "vendor/imgui/imgui.h"
+#include "Utils/RAII.h"
 
 #include "Four-in-row/C4_Gameplay.h"
 #include "Numerical Tic-Tac-Toe/NTTT_Gameplay.h"
 #include "Pyramic Tic Tac Toe/PTTT_Gameplay.h"
 #include "SUS/SUS_Gameplay.h"
 #include "Ultimate Tic-Tac-Toe/UTTT_Gameplay.h"
-#include "Utils/RAII.h"
-#include "vendor/imgui/imgui.h"
 #include "vendor/imgui/imgui_impl_glfw_gl3.h"
 #include "Word Tic-Tac-Toe/WTTT_Gameplay.h"
+#include "FivexFive Tic-Tac-Toe/FxF_Gameplay.h"
 
 using namespace std;
 
-vector<string> games_names = {"Pyramic Tic-Tac-Toe", "Four in row", "Numerical Tic-Tac-Toe", "Ultimate Tic-Tac-Toe", "SUS Tic-Tac-Toe", "Word Tic-Tac-Toe"};
+vector<string> games_names = {"Pyramic Tic-Tac-Toe", "Four in row", "5x5 Tic-Tac-Toe", "Numerical Tic-Tac-Toe", "Ultimate Tic-Tac-Toe", "SUS Tic-Tac-Toe", "Word Tic-Tac-Toe"};
 
 #pragma region UI
 
 PTTT_Gameplay pttt;
 C4_Gameplay c4;
+FxF_Gameplay fxf;
 NTTT_Gameplay nttt;
 UTTT_Gameplay uttt;
 SUS_Gameplay sus;
@@ -29,6 +31,10 @@ WTTT_Gameplay wttt;
 
 void pttt_ui() {
     pttt.UI();
+}
+
+void fxf_ui() {
+    fxf.UI();
 }
 
 void c4_ui() {
@@ -53,7 +59,7 @@ void wttt_ui() {
 
 #pragma endregion
 
-vector games = { pttt_ui, c4_ui, nttt_ui, uttt_ui, sus_ui, wttt_ui };
+vector games = { pttt_ui, c4_ui, fxf_ui, nttt_ui, uttt_ui, sus_ui, wttt_ui };
 
 void cli_menu();
 void gui_menu();
