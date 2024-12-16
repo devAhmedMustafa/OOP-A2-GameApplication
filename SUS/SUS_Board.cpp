@@ -8,6 +8,7 @@
 #include <iostream>
 
 #include "../Utils/GameTheory.h"
+#include "../vendor/imgui/imgui.h"
 
 using namespace std;
 
@@ -27,6 +28,7 @@ SUS_Board::~SUS_Board() {
 
 
 void SUS_Board::display_board() {
+#ifndef GUI
     cout << " ";
     for (int i = 0; i < 3; i++) {
         cout << setw(3) << i + 1;
@@ -39,6 +41,27 @@ void SUS_Board::display_board() {
         }
         cout << endl;
     }
+#endif
+
+#ifndef CLI
+
+    ImGui::Begin("SUS Board");
+
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+
+            ImGui::PushID(i * 3 + j);
+            ImGui::Button(&board[i][j], ImVec2(50, 50));
+            ImGui::PopID();
+            ImGui::SameLine();
+
+        }
+    }
+
+    ImGui::End();
+
+#endif
+
 }
 
 bool SUS_Board::update_board(int x, int y, char symbol) {
