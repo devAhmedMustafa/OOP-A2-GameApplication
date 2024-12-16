@@ -6,20 +6,7 @@
 #define UTTT_H
 #include "../Core/Board.h"
 
-class TTT : public Board<char> {
-public:
-
-    TTT();
-    ~TTT();
-
-    bool update_board(int x, int y, char symbol) override;
-    bool is_draw() override;
-    bool is_win() override;
-    bool game_is_over() override;
-    void display_board() override;
-
-    friend class UTTT_Board;
-};
+#include "../Tic-Tac-Toe/TTT.h"
 
 class UTTT_Board : public Board<char> {
 

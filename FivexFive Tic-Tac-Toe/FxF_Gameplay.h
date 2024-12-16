@@ -13,7 +13,8 @@
 class FxF_Gameplay : public Gameplay<char> {
 public:
 
-    FxF_Gameplay() = default;
+    FxF_Gameplay() {}
+    ~FxF_Gameplay() override {}
 
     void UI(){
         cout << "Welcome to 5x5 Tic-Tac-Toe game!" << endl;

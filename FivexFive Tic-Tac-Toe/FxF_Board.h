@@ -6,7 +6,6 @@
 #define GAMEAPPLICATION_FXF_BOARD_H
 
 #include "../Core/Board.h"
-#include <map>
 
 
 class FxF_Board : public Board<char> {
