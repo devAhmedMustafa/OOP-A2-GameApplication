@@ -1,5 +1,7 @@
 #include "GameManager.h"
 
+#include "../vendor/imgui/imgui.h"
+
 template <typename T>
 GameManager<T>::GameManager(Board<T>* bPtr, Player<T>* playerPtr[2]) {
     boardPtr = bPtr;
@@ -9,7 +11,9 @@ GameManager<T>::GameManager(Board<T>* bPtr, Player<T>* playerPtr[2]) {
 
 template <typename T>
 void GameManager<T>::run() {
-    int x, y;
+    int x=-1, y=-1;
+
+#ifndef GUI
 
     boardPtr->display_board();
 
@@ -31,6 +35,65 @@ void GameManager<T>::run() {
             }
         }
     }
+
+#else
+
+
+    switch (currentState) {
+
+        case GameState::PlayerTurn:
+            cout << "Player turn" << endl;
+            boardPtr->display_board();
+
+            players[currentPlayer]->getmove(x, y);
+            if (x >= 0 && y >= 0) {
+                cout << "Player " << currentPlayer << " moved to " << x << ", " << y << endl;
+                currentState = GameState::UpdateBoard;
+            }
+            break;
+
+        case GameState::UpdateBoard:
+            cout << "Update board" << endl;
+            if (!boardPtr->update_board(x, y, players[currentPlayer]->getsymbol())) {
+                cout << "Invalid move. Try again\n";
+                // Invalid move, retry
+                currentState = GameState::PlayerTurn;
+            } else {
+                currentState = GameState::CheckWin;
+            }
+            break;
+
+        case GameState::CheckWin:
+            cout << "Check win" << endl;
+
+            if (boardPtr->is_win()) {
+                ImGui::Text("%s wins!", players[currentPlayer]->getname().c_str());
+                currentState = GameState::GameOver;
+            } else if (boardPtr->is_draw()) {
+                ImGui::Text("It's a draw!");
+                currentState = GameState::GameOver;
+            } else {
+                currentPlayer = 1 - currentPlayer;
+                currentState = GameState::PlayerTurn;
+            }
+            break;
+
+        case GameState::GameOver:
+            cout << "Game over" << endl;
+            if (ImGui::Button("Restart")) {
+                restartGame();
+            }
+            break;
+
+    }
+#endif
+
+}
+
+template <typename T>
+void GameManager<T>::restartGame() {
+    currentState = GameState::PlayerTurn;
+    currentPlayer = 0;
 }
 
 template class GameManager<int>;

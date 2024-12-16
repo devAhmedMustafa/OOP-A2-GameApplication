@@ -8,13 +8,18 @@
 
 template <typename T>
 class Gameplay {
+
+protected:
+    Player<T> *player1{nullptr}, *player2{nullptr};
+    Board<T>* board{nullptr};
+    GameManager<T>* gm{nullptr};
+
 public:
-    static void play(Player<T>* player1, Player<T>* player2, Board<T>* board) {
 
-        player1->setBoard(board);
-        player2->setBoard(board);
+    Gameplay();
 
-        GameManager<T> gm(board, new Player<T> *[2]{player1, player2});
-        gm.run();
-    }
+    virtual ~Gameplay();
+
+    void play();
+    virtual void UI();
 };

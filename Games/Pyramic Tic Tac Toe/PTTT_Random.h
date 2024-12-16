@@ -7,7 +7,7 @@
 #include "PTTT_Player.h"
 #include "../Core/RandomPlayer.h"
 
-class PTTT_Random : public PTTT_Player, public RandomPlayer<char> {
+class PTTT_Random : public RandomPlayer<char> {
 public:
     PTTT_Random(char symbol);
     void getmove(int &x, int &y) override;

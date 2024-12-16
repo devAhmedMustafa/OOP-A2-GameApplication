@@ -18,14 +18,42 @@ using namespace std;
 
 vector<string> games_names = {"Pyramic Tic-Tac-Toe", "Four in row", "Numerical Tic-Tac-Toe", "Ultimate Tic-Tac-Toe", "SUS Tic-Tac-Toe", "Word Tic-Tac-Toe"};
 
-vector games = {
-    PTTT_Gameplay::UI,
-    C4_Gameplay::UI,
-    NTTT_Gameplay::UI,
-    UTTT_Gameplay::UI,
-    SUS_Gameplay::UI,
-    WTTT_Gameplay::UI
-};
+#pragma region UI
+
+PTTT_Gameplay pttt;
+C4_Gameplay c4;
+NTTT_Gameplay nttt;
+UTTT_Gameplay uttt;
+SUS_Gameplay sus;
+WTTT_Gameplay wttt;
+
+void pttt_ui() {
+    pttt.UI();
+}
+
+void c4_ui() {
+    c4.UI();
+}
+
+void nttt_ui() {
+    nttt.UI();
+}
+
+void uttt_ui() {
+    uttt.UI();
+}
+
+void sus_ui() {
+    sus.UI();
+}
+
+void wttt_ui() {
+    wttt.UI();
+}
+
+#pragma endregion
+
+vector games = { pttt_ui, c4_ui, nttt_ui, uttt_ui, sus_ui, wttt_ui };
 
 void cli_menu();
 void gui_menu();
@@ -109,14 +137,22 @@ void cli_menu() {
 }
 
 void gui_menu() {
+
+    static int activated = -1;
+
     RAII games_window;
     games_window.Begin("Games Menu");
 
     for (int i = 0; i < games_names.size(); i++) {
         if (ImGui::Button(games_names[i].c_str())) {
-            const auto game = games[i];
-            game();
+            activated = i;
         }
     }
 
+    if (activated == -1) {
+        return;
+    }
+
+    const auto game = games[activated];
+    game();
 }

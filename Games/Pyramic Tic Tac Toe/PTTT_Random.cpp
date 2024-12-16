@@ -4,7 +4,7 @@
 
 #include "PTTT_Random.h"
 
-PTTT_Random::PTTT_Random(char symbol) : PTTT_Player(symbol), RandomPlayer<char>(symbol) {
+PTTT_Random::PTTT_Random(char symbol) : RandomPlayer<char>(symbol) {
     this->dimension = 5;
 }
 

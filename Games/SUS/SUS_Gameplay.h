@@ -14,8 +14,11 @@
 
 class SUS_Gameplay : public Gameplay<char> {
 public:
-    static void UI() {
-        auto *board = new SUS_Board();
+
+    SUS_Gameplay() = default;
+
+     void UI() {
+
 
         string p1_name;
 
@@ -25,6 +28,7 @@ public:
 #ifndef GUI
         cout << "Welcome to SUS Tic-Tac-Toe game!" << endl;
 
+         board = new SUS_Board();
 
 
         cout << "Enter player 1 name: ";
@@ -39,11 +43,11 @@ public:
 
 #ifndef CLI
 
-        // ImGui::End();
         RAII susGame;
         susGame.Begin("SUS Tic-Tac-Toe");
 
         if (steps == 0) {
+            board = new SUS_Board();
             ImGui::Text("Welcome to SUS Tic-Tac-Toe game!");
             steps++;
         }
@@ -56,6 +60,7 @@ public:
             if (ImGui::Button("Submit") && strlen(name_buffer) > 0) {
                 p1_name = name_buffer;
                 steps++;
+                player1 = new SUS_Player(p1_name, 'S');
             }
         }
 
@@ -81,30 +86,42 @@ public:
 #endif
 
 
-        auto* player1 = new SUS_Player(p1_name, 'X');
-        Player<char>* player2 = nullptr;
-
         if (action == 1) {
             string p2_name;
+
 #ifndef GUI
             cout << "Enter player 2 name: ";
             cin >> p2_name;
 #endif
 
-            player2 = new SUS_Player(p2_name, 'O');
+#ifndef CLI
+            if (steps == 3) {
+                ImGui::Text("Enter player 2 name:");
+                static char name_buffer[256] = "";
+                ImGui::InputText("#p2_name:", name_buffer, 256);
+                if (ImGui::Button("Submit") && strlen(name_buffer) > 0) {
+                    p2_name = name_buffer;
+                    player2 = new SUS_Player(p2_name, 'U');
+                    steps++;
+                }
+            }
+#endif
 
         }
 
         else if (action == 2) {
-            player2 = new SUS_Random('O');
+            if (steps == 3) {
+                player2 = new SUS_Random('O');
+                steps++;
+            }
         }
 
-        play(player1, player2, board);
-
-        delete player1;
-        delete player2;
-        delete board;
-    }
+#ifndef CLI
+        if (steps != 4) return;
+#endif
+        cout << "Playing..." << endl;
+        play();
+     }
 
 };
 

@@ -8,7 +8,7 @@
 #include "../Core/RandomPlayer.h"
 
 
-class C4_Random : public C4_Player, public RandomPlayer<char> {
+class C4_Random : public RandomPlayer<char> {
 public:
     C4_Random(char symbol);
     void getmove(int &x, int &y) override;

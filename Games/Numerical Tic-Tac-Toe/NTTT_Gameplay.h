@@ -9,14 +9,16 @@
 #include "../Core/GameManager.h"
 #include "../Core/Gameplay.h"
 
-class NTTT_Gameplay : Gameplay<int>{
+class NTTT_Gameplay : public Gameplay<int>{
 
 public:
 
-    static void UI() {
+    NTTT_Gameplay() = default;
+
+     void UI() {
         cout << "Welcome to Numerical Tic-Tac-Toe game!" << endl;
 
-        auto *board = new NTTT_Board();
+        board = new NTTT_Board();
 
         string p1_name;
 
@@ -30,8 +32,7 @@ public:
         int action = 0;
         cin >> action;
 
-        auto* player1 = new NTTT_Player(p1_name, 'X');
-        Player<int>* player2 = nullptr;
+        player1 = new NTTT_Player(p1_name, 'X');
 
         if (action == 1) {
             string p2_name;
@@ -44,11 +45,8 @@ public:
             player2 = new NTTT_Random('O');
         }
 
-        play(player1, player2, board);
+        play();
 
-        delete player1;
-        delete player2;
-        delete board;
     }
 
 

@@ -7,7 +7,9 @@
 #include <iomanip>
 #include <iostream>
 
+#include "SUS_GuiHandler.h"
 #include "../Utils/GameTheory.h"
+#include "../Utils/RAII.h"
 #include "../vendor/imgui/imgui.h"
 
 using namespace std;
@@ -45,20 +47,19 @@ void SUS_Board::display_board() {
 
 #ifndef CLI
 
-    ImGui::Begin("SUS Board");
-
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
 
             ImGui::PushID(i * 3 + j);
-            ImGui::Button(&board[i][j], ImVec2(50, 50));
+            if (ImGui::Button(&board[i][j], ImVec2(50, 50))) {
+                SUS_GuiHandler::set_x(j);
+                SUS_GuiHandler::set_y(i);
+            }
             ImGui::PopID();
             ImGui::SameLine();
-
         }
+        ImGui::NewLine();
     }
-
-    ImGui::End();
 
 #endif
 

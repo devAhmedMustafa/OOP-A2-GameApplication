@@ -14,10 +14,12 @@
 class UTTT_Gameplay : public Gameplay<char> {
 public:
 
-    static void UI() {
+    UTTT_Gameplay() = default;
+
+     void UI() {
         cout << "Welcome to Ultimate Tic-Tac-Toe game!" << endl;
 
-        auto *board = new UTTT_Board();
+        board = new UTTT_Board();
 
         string p1_name;
 
@@ -31,8 +33,7 @@ public:
         int action = 0;
         cin >> action;
 
-        auto* player1 = new UTTT_Player(p1_name, 'X');
-        Player<char>* player2 = nullptr;
+        player1 = new UTTT_Player(p1_name, 'X');
 
         if (action == 1) {
             string p2_name;
@@ -45,11 +46,8 @@ public:
             player2 = new UTTT_Random('O');
         }
 
-        play(player1, player2, board);
+        play();
 
-        delete player1;
-        delete player2;
-        delete board;
     }
 };
 

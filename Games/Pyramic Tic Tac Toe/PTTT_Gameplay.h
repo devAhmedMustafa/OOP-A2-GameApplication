@@ -13,10 +13,12 @@
 class PTTT_Gameplay : Gameplay<char> {
 public:
 
-    static void UI() {
+    PTTT_Gameplay() = default;
+
+     void UI() {
         cout << "Welcome to Pyramic Tic-Tac-Toe game!" << endl;
 
-        auto *board = new PTTT_Board();
+        board = new PTTT_Board();
 
         string p1_name;
 
@@ -30,8 +32,7 @@ public:
         int action = 0;
         cin >> action;
 
-        auto* player1 = new PTTT_Player(p1_name, 'X');
-        auto* player2 = new PTTT_Player("Player 2", 'O');
+        player1 = new PTTT_Player(p1_name, 'X');
 
         if (action == 1) {
             string p2_name;
@@ -44,11 +45,8 @@ public:
             player2 = new PTTT_Random('O');
         }
 
-        play(player1, player2, board);
+        play();
 
-        delete player1;
-        delete player2;
-        delete board;
     }
 };
 

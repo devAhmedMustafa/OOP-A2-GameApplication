@@ -4,7 +4,7 @@
 
 #include "C4_Random.h"
 
-C4_Random::C4_Random(char symbol) : C4_Player(symbol), RandomPlayer<char>(symbol) {
+C4_Random::C4_Random(char symbol) : RandomPlayer<char>(symbol) {
     this->dimension = 7;
 }
 
