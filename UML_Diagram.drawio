@@ -1,78 +1,72 @@
-<mxfile>
+<mxfile host="drawio-plugin" modified="2024-12-16T23:58:57.843Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" version="22.1.22" etag="ZkDHEmPc5Lr4nXdX-lvM" type="embed">
   <diagram id="uml" name="UML">
-    <mxGraphModel dx="1394" dy="860" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1066" dy="752" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <!-- Core/Board -->
-        <mxCell id="Board" value="Board&lt;T&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="Board" value="Board&lt;T&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="60" y="50" width="120" height="80" as="geometry" />
         </mxCell>
-        <!-- Core/Player -->
-        <mxCell id="Player" value="Player&lt;T&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="Player" value="Player&lt;T&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="60" y="200" width="120" height="80" as="geometry" />
         </mxCell>
-        <!-- Core/RandomPlayer -->
-        <mxCell id="RandomPlayer" value="RandomPlayer&lt;T&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="RandomPlayer" target="SUS_Random">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RandomPlayer" value="RandomPlayer&lt;T&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="60" y="350" width="120" height="80" as="geometry" />
         </mxCell>
-        <!-- SUS -->
-        <mxCell id="SUS_Board" value="SUS_Board" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="SUS_Board" value="SUS_Board" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="260" y="50" width="120" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="SUS_Player" value="SUS_Player" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="SUS_Player" value="SUS_Player" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="260" y="200" width="120" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="SUS_Random" value="SUS_Random" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="SUS_Random" value="SUS_Random" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="260" y="350" width="120" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="SUS_Gameplay" value="SUS_Gameplay" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="SUS_Gameplay" value="SUS_Gameplay" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="260" y="500" width="120" height="80" as="geometry" />
         </mxCell>
-        <!-- UTTT -->
-        <mxCell id="UTTT_Board" value="UTTT_Board" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="UTTT_Board" value="UTTT_Board" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="460" y="50" width="120" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="UTTT_Player" value="UTTT_Player" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="UTTT_Player" value="UTTT_Player" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="460" y="200" width="120" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="UTTT_Random" value="UTTT_Random" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="UTTT_Random" value="UTTT_Random" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="460" y="350" width="120" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="UTTT_Gameplay" value="UTTT_Gameplay" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="UTTT_Gameplay" value="UTTT_Gameplay" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="460" y="500" width="120" height="80" as="geometry" />
         </mxCell>
-        <!-- WTTT -->
-        <mxCell id="WTTT_Board" value="WTTT_Board" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="WTTT_Board" value="WTTT_Board" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="660" y="50" width="120" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="WTTT_Player" value="WTTT_Player" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="WTTT_Player" value="WTTT_Player" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="660" y="200" width="120" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="WTTT_Random" value="WTTT_Random" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="WTTT_Random" value="WTTT_Random" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="660" y="350" width="120" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="WTTT_Gameplay" value="WTTT_Gameplay" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="WTTT_Gameplay" value="WTTT_Gameplay" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="660" y="500" width="120" height="80" as="geometry" />
         </mxCell>
-        <!-- Connect4Agent -->
-        <mxCell id="Connect4Agent" value="Connect4Agent" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="Connect4Agent" value="Connect4Agent" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="860" y="50" width="140" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="Network" value="Network" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="Network" value="Network" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="860" y="200" width="120" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="ReplayBuffer" value="ReplayBuffer" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="ReplayBuffer" value="ReplayBuffer" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="860" y="350" width="120" height="80" as="geometry" />
         </mxCell>
-        <!-- Inheritance/Composition -->
-        <mxCell id="inherit_board" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="Board" target="SUS_Board">
+        <mxCell id="inherit_board" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" parent="1" source="Board" target="SUS_Board" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="inherit_player" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="Player" target="SUS_Player">
+        <mxCell id="inherit_player" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" parent="1" source="Player" target="SUS_Player" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <!-- Other inheritance omitted for simplicity -->
       </root>
     </mxGraphModel>
   </diagram>
