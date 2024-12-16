@@ -6,10 +6,10 @@
 #define GAMEAPPLICATION_BOARD_PTTT_H
 #include "../Core/Board.h"
 
-class Board_PTTT : public Board<char> {
+class PTTT_Board : public Board<char> {
 public:
-    Board_PTTT();
-    ~Board_PTTT();
+    PTTT_Board();
+    ~PTTT_Board();
     bool update_board(int x, int y, char symbol) override;
     void display_board() override;
     bool is_win() override;

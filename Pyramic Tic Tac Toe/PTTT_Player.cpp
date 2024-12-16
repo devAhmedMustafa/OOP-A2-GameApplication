@@ -13,4 +13,4 @@ void PTTT_Player::getmove(int &x, int &y) {
     cin >> col >> row;
     x = col - 1;
     y = row - 1;
-
+}

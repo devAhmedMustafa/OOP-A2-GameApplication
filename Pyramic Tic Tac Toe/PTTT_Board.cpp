@@ -6,24 +6,24 @@
 #include <iostream>
 #include <iomanip>
 
-Board_PTTT::Board_PTTT(){
+PTTT_Board::PTTT_Board(){
     this -> rows = 3;
     this -> columns = 5;
     this -> n_moves = n_moves;
     this -> board = new char*[3];
-    board[0] = new char[1];
-    board[1] = new char[3];
-    board[2] = new char[5];
+    board[0] = new char[1](0);
+    board[1] = new char[3](0);
+    board[2] = new char[5](0);
 }
 
-Board_PTTT::~Board_PTTT() {
+PTTT_Board::~PTTT_Board() {
     for (int i = 0; i < 3; i++){
         delete[] this->board[i];
     }
     delete[] this->board;
 }
 
-bool Board_PTTT::update_board(int x, int y, char symbol) {
+bool PTTT_Board::update_board(int x, int y, char symbol) {
 
     if(x < 0 || y < 0){
         return false;
@@ -48,14 +48,16 @@ bool Board_PTTT::update_board(int x, int y, char symbol) {
         return true;
 
     }
+
+    return false;
 }
-void Board_PTTT::display_board() {
+void PTTT_Board::display_board() {
 
-    cout << setw(9) << board[0][2] << endl;
+    cout << setw(9) << board[0][0] << endl;
 
-    cout << setw(6) << board[1][1]
-         << setw(3) << board[1][2]
-         << setw(3) << board[1][3] << endl;
+    cout << setw(6) << board[1][0]
+         << setw(3) << board[1][1]
+         << setw(3) << board[1][2] << endl;
 
     for (int j = 0; j < 5; j++) {
         cout << setw(3) << board[2][j];
@@ -63,7 +65,7 @@ void Board_PTTT::display_board() {
     cout << endl;
 }
 
-bool Board_PTTT::is_win() {
+bool PTTT_Board::is_win() {
 
     // Check middle vertical
     if (board[0][2] != 0 &&
@@ -107,10 +109,12 @@ bool Board_PTTT::is_win() {
         board[2][3] == board[2][4]){
         return true;
     }
+
+    return false;
 }
-bool Board_PTTT::is_draw() {
+bool PTTT_Board::is_draw() {
    return n_moves >= 7 && !is_win();
 }
-bool Board_PTTT::game_is_over() {
+bool PTTT_Board::game_is_over() {
     return is_win() || is_draw();
 }
