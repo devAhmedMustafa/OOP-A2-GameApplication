@@ -53,14 +53,14 @@ bool PTTT_Board::update_board(int x, int y, char symbol) {
 }
 void PTTT_Board::display_board() {
 
-    cout << setw(9) << board[0][0] << endl;
+    cout << setw(9) << (board[0][0] == 0? '-':board[0][0]) << endl;
 
-    cout << setw(6) << board[1][0]
-         << setw(3) << board[1][1]
-         << setw(3) << board[1][2] << endl;
+    cout << setw(6) << (board[1][0] == 0? '-':board[1][0])
+         << setw(3) << (board[1][1] == 0? '-':board[1][1])
+         << setw(3) << (board[1][2] == 0? '-':board[1][2]) << endl;
 
     for (int j = 0; j < 5; j++) {
-        cout << setw(3) << board[2][j];
+        cout << setw(3) << (board[2][j] == 0? '-':board[2][j]);
     }
     cout << endl;
 }
@@ -68,8 +68,8 @@ void PTTT_Board::display_board() {
 bool PTTT_Board::is_win() {
 
     // Check middle vertical
-    if (board[0][2] != 0 &&
-        board[0][2] == board[1][2] &&
+    if (board[0][0] != 0 &&
+        board[0][0] == board[1][2] &&
         board[1][2] == board[2][2]) {
         return true;
     }
@@ -113,7 +113,7 @@ bool PTTT_Board::is_win() {
     return false;
 }
 bool PTTT_Board::is_draw() {
-   return n_moves >= 7 && !is_win();
+   return n_moves >= 9 && !is_win();
 }
 bool PTTT_Board::game_is_over() {
     return is_win() || is_draw();

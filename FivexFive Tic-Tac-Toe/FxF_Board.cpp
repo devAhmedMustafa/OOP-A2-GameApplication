@@ -51,9 +51,21 @@ void FxF_Board::display_board() {
 
 bool FxF_Board::is_win() {
     vector<vector<int>> hKernel = {{1,1,1}};
-    vector<vector<int>> vKernel = {{1},{1},{1}};
-    vector<vector<int>> dKernel = {{1,0,0},{0,1,0},{0,0,1}};
-    vector<vector<int>> d2Kernel = {{0,0,1},{0,1,0},{1,0,0}};
+    vector<vector<int>> vKernel = {
+        {1},
+        {1},
+        {1}
+    };
+    vector<vector<int>> dKernel = {
+        {1,0,0},
+        {0,1,0},
+        {0,0,1}
+    };
+    vector<vector<int>> d2Kernel = {
+        {0,0,1},
+        {0,1,0},
+        {1,0,0}
+    };
 
     map<char, int> mapping = {{'X', 1}, {'O', -1}, {'-', 0}};
     auto normalized_board = GameTheory::normalizeBoard(board, 5, 5, mapping);
@@ -81,7 +93,7 @@ bool FxF_Board::is_win() {
 }
 
 bool FxF_Board::is_draw() {
-    return n_moves == 24;
+    return (n_moves == 24);
 }
 
 bool FxF_Board::game_is_over() {

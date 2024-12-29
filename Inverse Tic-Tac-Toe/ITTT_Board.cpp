@@ -70,7 +70,7 @@ void ITTT_Board::display_board() {
 }
 
 bool ITTT_Board::is_draw() {
-    return this->n_moves == 9;
+    return (this->n_moves == 9 && !this->is_win());
 }
 
 bool ITTT_Board::game_is_over() {
@@ -88,6 +88,15 @@ bool ITTT_Board::is_win() {
     auto normalized_board = GameTheory::normalizeBoard(this->board, 3, 3, mapping);
 
     int win = GameTheory::checkWinner(normalized_board, {hKernel, vKernel, dKernel, d2Kernel}, 3, 3, 3);
+
+    if (n_moves == 9){
+        if (win == 1) {
+            cout << "Player O wins" << endl;
+        }
+        if (win == -1) {
+            cout << "Player X wins" << endl;
+        }
+    }
 
     if (last_symbol == 'X' && win == -1) {
         return true;

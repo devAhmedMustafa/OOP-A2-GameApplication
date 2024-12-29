@@ -32,17 +32,17 @@ public:
         int action = 0;
         cin >> action;
 
-        player1 = new NTTT_Player(p1_name, 'X');
+        player1 = new NTTT_Player(p1_name, 1);
 
         if (action == 1) {
             string p2_name;
 
             cout << "Enter player 2 name: ";
             cin >> p2_name;
-            player2 = new NTTT_Player(p2_name, 'O');
+            player2 = new NTTT_Player(p2_name, 2);
         }
         else if (action == 2) {
-            player2 = new NTTT_Random('O');
+            player2 = new NTTT_Random(2);
         }
 
         play();

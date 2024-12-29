@@ -18,9 +18,6 @@ Gameplay<T>::~Gameplay() {
 template<typename T>
 void Gameplay<T>::play() {
 
-    player1->setBoard(board);
-    player2->setBoard(board);
-
     if (gm == nullptr)
         gm = new GameManager(board, new Player<T> *[2]{player1, player2});
 

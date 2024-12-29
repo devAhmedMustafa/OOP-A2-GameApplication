@@ -34,6 +34,8 @@ public:
         cout << "Enter player 1 name: ";
         cin >> p1_name;
 
+         player1 = new SUS_Player(p1_name, 'S');
+
         cout << "Choose the game mode:" << endl;
         cout << "1. Player vs Player" << endl;
         cout << "2. Player vs Random" << endl;
@@ -92,6 +94,7 @@ public:
 #ifndef GUI
             cout << "Enter player 2 name: ";
             cin >> p2_name;
+            player2 = new SUS_Player(p2_name, 'U');
 #endif
 
 #ifndef CLI
@@ -110,17 +113,23 @@ public:
         }
 
         else if (action == 2) {
+#ifndef CLI
             if (steps == 3) {
                 player2 = new SUS_Random('O');
                 steps++;
             }
+
+#else
+            player2 = new SUS_Random('O');
+#endif
+
         }
 
 #ifndef CLI
         if (steps != 4) return;
 #endif
-        cout << "Playing..." << endl;
-        play();
+
+         play();
      }
 
 };

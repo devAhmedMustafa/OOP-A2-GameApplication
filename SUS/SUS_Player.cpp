@@ -24,6 +24,9 @@ void SUS_Player::getmove(int &x, int &y) {
 
     cin >> row >> col;
 
+    x = row - 1;
+    y = col - 1;
+
 #else
 
     if (SUS_GuiHandler::buttonClicked) {
